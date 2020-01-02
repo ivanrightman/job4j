@@ -7,11 +7,6 @@ import static org.junit.Assert.assertThat;
 public class MaxTest {
     @Test
     public void whenMax1To2Then2() {
-        /*int inLeft = 10;
-        int inRight = 20;
-        int expected = 20;
-        int out = Max.max(inLeft, inRight);
-        Assert.assertEquals(expected, out);*/
         int result = Max.max(1,2);
         assertThat(result, is(2));
     }
