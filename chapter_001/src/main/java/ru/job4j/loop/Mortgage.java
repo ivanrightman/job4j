@@ -6,7 +6,12 @@ public class Mortgage {
         int year = 0;
         double ostatok = amount + (amount*percent);
         while(ostatok > 0) {
-            ostatok -= salary;
+            if (ostatok < (amount + (amount*percent))) {
+                ostatok = (ostatok + (ostatok*percent)) - salary;
+            }
+            else {
+                ostatok -= salary;
+            }
             year++;
         }
         return year;
