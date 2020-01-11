@@ -1,11 +1,18 @@
 package ru.job4j.calculator;
 
+/**
+ * Class Класс для вычисления арифметических операций
+ * @author Ivan
+ * @since 11.01.2020
+ * @version 1
+ */
 public class Calculator {
+
     public static void add(double first, double second) {
         double result = first + second;
         System.out.println(first + " + " + second + " = " + result);
     }
-    //div, multiply, subtract
+
     public static void div(double first, double second) {
         double result = first / second;
         System.out.println(first + " / " + second + " = " + result);
@@ -21,6 +28,10 @@ public class Calculator {
         System.out.println(first + " - " + second + " = " + result);
     }
 
+    /**
+     * Main
+     * @param args - args.
+     */
     public static void main(String[] args) {
         add(1,1);
         div(4, 2);
