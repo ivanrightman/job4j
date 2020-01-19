@@ -14,18 +14,18 @@ public class Check {
     public boolean mono(boolean[] data) {
         boolean result = true;
         for (int index = 0; index < data.length; index++) {
-            if (data[index] == true && data[index-index] == true) {
-                continue;
-            }
-            else if (data[index] == false && data[index-index] == false) {
-                continue;
-            }
-            else if (data[index] == false && data[index-index] == true) {
+            if (data[0] != data[index]) {
                 result = false;
+                break;
             }
-            else {
+            /*
+            enhanced for:
+            for (boolean datum : data) {
+            if (data[0] != datum) {
                 result = false;
+                break;
             }
+             */
         }
         return result;
     }
