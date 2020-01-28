@@ -104,4 +104,17 @@ public class MatrixCheckTest {
         boolean result = MatrixCheck.isWin(input);
         assertThat(result, is(true));
     }
+
+    @Test
+    public void whenFirstXFalseSecondTrue() {
+        char[][] input = {
+                {'X', ' ', 'X', ' ', ' '},
+                {' ', 'X', 'X', ' ', ' '},
+                {' ', ' ', 'X', ' ', ' '},
+                {' ', ' ', 'X', ' ', ' '},
+                {'X', 'X', 'X', 'X', 'X'},
+        };
+        boolean result = MatrixCheck.isWin(input);
+        assertThat(result, is(true));
+    }
 }
