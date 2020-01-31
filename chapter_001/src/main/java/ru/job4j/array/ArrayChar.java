@@ -7,8 +7,7 @@ public class ArrayChar {
             //result = word[index] == pref[index];
             if (word[index] != pref[index]) {
                 result = false;
-            }
-            else {
+            } else {
                 result = true;
             }
         }

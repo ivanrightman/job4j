@@ -27,11 +27,11 @@ public class CheckTest {
         Check check = new Check();
         boolean[] data = new boolean[] {false, false, false};
         boolean result = check.mono(data);
-        assertThat(result,is(true));
+        assertThat(result, is(true));
     }
 
     @Test
-    public void NotMonoBeginsWithTwoFalse() {
+    public void notMonoBeginsWithTwoFalse() {
         Check check = new Check();
         boolean[] data = new boolean[] {false, false, true, true, true, true, true, true};
         boolean result = check.mono(data);
@@ -39,7 +39,7 @@ public class CheckTest {
     }
 
     @Test
-    public void NotMonoBeginsWithTwoTrue() {
+    public void notMonoBeginsWithTwoTrue() {
         Check check = new Check();
         boolean[] data = new boolean[] {true, true, false, false, false, false, false, false};
         boolean result = check.mono(data);

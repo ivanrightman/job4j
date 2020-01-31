@@ -19,11 +19,9 @@ public class Slash {
                 //row=0 cell=4; row=1 cell=2; row=3 cell=1; row=4 cell=0;
                 if (left) {
                     System.out.print("0");
-                }
-                else if (right) {
+                } else if (right) {
                     System.out.print("0");
-                }
-                else {
+                } else {
                     System.out.print(" ");
                 }
             }

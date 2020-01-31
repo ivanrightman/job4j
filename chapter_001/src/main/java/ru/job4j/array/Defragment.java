@@ -8,11 +8,11 @@ public class Defragment {
                 int point = 1;
                 while (array[index] == null) {
                     tmp = array[index];
-                    if (index+point >= array.length) {
+                    if (index + point >= array.length) {
                         break;
                     }
-                    array[index] = array[index+point];
-                    array[index+point] = tmp;
+                    array[index] = array[index + point];
+                    array[index + point] = tmp;
                     point++;
                 }
             }

@@ -10,7 +10,7 @@ public class Board {
         for (int row = 0; row < height; row++) {
             for (int cell = 0; cell < width; cell++) {
                 //Сумма индексов всегда четное число (число делится на 2 без остатка)
-                if((row + cell) %2 == 0) {
+                if ((row + cell) % 2 == 0) {
                     System.out.print("X");
                 } else {
                     System.out.print(" ");

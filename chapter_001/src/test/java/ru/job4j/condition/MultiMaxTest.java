@@ -7,7 +7,7 @@ public class MultiMaxTest {
     @Test
     public void whenSecondMax() {
         MultiMax check = new MultiMax();
-        int result = check.max(1 ,4, 2);
+        int result = check.max(1, 4, 2);
         assertThat(result, is(4));
     }
 
@@ -21,14 +21,14 @@ public class MultiMaxTest {
     @Test
     public void whenThirdMax() {
         MultiMax check = new MultiMax();
-        int result = check.max(123456,1234567,12345678);
+        int result = check.max(123456, 1234567, 12345678);
         assertThat(result, is(12345678));
     }
 
     @Test
     public void whenAllEqual() {
         MultiMax check = new MultiMax();
-        int result = check.max(12345,12345,12345);
+        int result = check.max(12345, 12345, 12345);
         assertThat(result, is(12345));
     }
 }
