@@ -6,20 +6,20 @@ public class Merge {
     public int[] merge(int[] left, int[] right) {
         int[] rsl = new int[left.length + right.length];
         int i = 0;
-        int n = 0;
-        int o = 0;
-        while (i < left.length && n < right.length) {
-            if (left[i] < right[n]) {
-                rsl[o++] = left[i++];
+        int j = 0;
+        int k = 0;
+        while (i < left.length && j < right.length) {
+            if (left[i] < right[j]) {
+                rsl[k++] = left[i++];
             } else {
-                rsl[o++] = right[n++];
+                rsl[k++] = right[j++];
             }
         }
         while (i < left.length) {
-            rsl[o++] = left[i++];
+            rsl[k++] = left[i++];
         }
-        while (n < right.length) {
-            rsl[o++] = right[n++];
+        while (j < right.length) {
+            rsl[k++] = right[j++];
         }
         return rsl;
     }
