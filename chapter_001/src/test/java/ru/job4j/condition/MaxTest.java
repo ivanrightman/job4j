@@ -22,4 +22,16 @@ public class MaxTest {
         int result = Max.max(98765, 98765);
         assertThat(result, is(98765));
     }
+
+    @Test
+    public void firstBiggerThan2ndAnd3rd() {
+        int result = Max.max(1234567890, 42, 23);
+        assertThat(result, is(1234567890));
+    }
+
+    @Test
+    public void fourthBiggerThan1stAnd2ndAnd3rd() {
+        int result = Max.max(1234567, 123456, 12345678, 123456789);
+        assertThat(result, is(123456789));
+    }
 }
