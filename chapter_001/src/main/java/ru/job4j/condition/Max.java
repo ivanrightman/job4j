@@ -11,12 +11,15 @@ public class Max {
     }
 
     public static int max(int first, int second, int third) {
-        int another = max(second, third);
-        return max(first, another);
+        /*int another = max(second, third);
+        return max(first, another); */
+
+        //более простой вариант:
+        return max(max(first, second), third);
+
     }
 
     public static int max(int first, int second, int third, int fourth) {
-        int another = max(second, third, fourth);
-        return first > another ? first : another;
+        return max(max(first, second), max(third, fourth));
     }
 }
