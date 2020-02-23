@@ -10,6 +10,5 @@ public class Animal {
 
     public static void main(String[] args) {
         Tiger tiger = new Tiger("Tiger");
-
     }
 }
