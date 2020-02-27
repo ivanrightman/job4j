@@ -19,14 +19,13 @@ public class Library {
             System.out.println("Book name: " + sh.getName() + "; Sheets total: " + sh.getSheets());
         }
 
+        Book tmp = shelf[0];
+        shelf[0] = shelf[3];
+        shelf[3] = tmp;
+
         for (int i = 0; i < shelf.length; i++) {
             Book sh = shelf[i];
-            if (shelf[i] == shelf[0]) {
-                sh = code;
-            } else if (shelf[i] == shelf[3]) {
-                sh = nature;
-            }
-            System.out.println("Perestanovka_start..." + "Book name: " + sh.getName() + "; Sheets total: " + sh.getSheets());
+            System.out.println("Perestanovka_start" + "Book name: " + sh.getName() + "; Sheets total: " + sh.getSheets());
         }
 
         for (int i = 0; i < shelf.length; i++) {
