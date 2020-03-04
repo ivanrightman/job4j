@@ -43,13 +43,14 @@ public class Tracker {
      * @return
      */
     public Item[] findAll() {
-        Item[] tmp = Arrays.copyOf(items, position);
+        return Arrays.copyOf(items, position);
+        /*Item[] tmp = Arrays.copyOf(items, position);
         for (int i = 0; i < position; i++) {
             if (this.items[i].getName() != null && this.items[i].getId() != null) {
                 tmp[i] = this.items[i];
             }
         }
-        return tmp;
+        return tmp;*/
     }
 
     /**
@@ -62,12 +63,14 @@ public class Tracker {
      */
     public Item[] findByName(String key) {
         Item[] tmp = new Item[position];
+        int size = 0;
         for (int i = 0; i < position; i++) {
             if (this.items[i].getName().equals(key)) {
                 tmp[i] = this.items[i];
+                size++;
             }
         }
-        return tmp;
+        return Arrays.copyOf(tmp, size);
     }
 
     /**
@@ -81,6 +84,7 @@ public class Tracker {
         for (int i = 0; i < this.position; i++) {
                 if (this.items[i].getId().equals(id)) {
                     item = this.items[i];
+                    break;
                 }
             }
             return item;
