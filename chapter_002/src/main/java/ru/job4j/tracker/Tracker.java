@@ -38,6 +38,16 @@ public class Tracker {
         return String.valueOf(rm.nextLong() + System.currentTimeMillis());
     }
 
+    private int indexOf(String id) {
+        int rsl = -1;
+        for (int i = 0; i < position; i++) {
+            if (items[i].getId().equals(id)) {
+                rsl = i;
+                break;
+            }
+        }
+        return rsl;
+    }
     /**
      * Метод public Item[] findAll() возвращает копию массива this.items без null элементов (без пустых клеток).
      * @return
@@ -80,13 +90,15 @@ public class Tracker {
      * @return
      */
     public Item findById(String id) {
-        Item item = null;
-        for (int i = 0; i < this.position; i++) {
-                if (this.items[i].getId().equals(id)) {
-                    item = this.items[i];
-                    break;
-                }
-            }
-            return item;
+        int index = indexOf(id);
+        return index != -1 ? items[index] : null;
     }
+
+    public boolean replace(String id, Item item) {
+        int index = indexOf(id);
+        item.setId(id);
+        items[index] = item;
+        return true;
+        }
 }
+
