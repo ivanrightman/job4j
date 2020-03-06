@@ -99,6 +99,17 @@ public class Tracker {
         item.setId(id);
         items[index] = item;
         return index != -1 ? true : false;
-        }
+    }
+
+    public boolean delete(String id) {
+        int index = indexOf(id);
+        int start = index + 1;
+        int distPos = index;
+        int size = position - index;
+        System.arraycopy(items, start, items, distPos, size);
+        items[position - 1] = null;
+        position--;
+        return position != -1 ? true : false;
+    }
 }
 
