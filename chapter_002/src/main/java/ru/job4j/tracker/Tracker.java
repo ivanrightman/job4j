@@ -108,9 +108,11 @@ public class Tracker {
         int start = index + 1;
         int distPos = index;
         int size = position - index;
-        System.arraycopy(items, start, items, distPos, size);
-        items[position - 1] = null;
-        position--;
+        if (index != -1) {
+            System.arraycopy(items, start, items, distPos, size);
+            items[position - 1] = null;
+            position--;
+        }
         return position != -1 ? true : false;
     }
 }
