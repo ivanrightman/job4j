@@ -97,7 +97,9 @@ public class Tracker {
     public boolean replace(String id, Item item) {
         int index = indexOf(id);
         item.setId(id);
-        items[index] = item;
+        if (index != -1) {
+            items[index] = item;
+        }
         return index != -1 ? true : false;
     }
 
