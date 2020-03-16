@@ -44,13 +44,20 @@ public class StartUI {
         System.out.println("=== Find item by id ====");
         String itemId = input.askStr("Enter item id: ");
         Item item = tracker.findById(itemId);
-        System.out.println("Item name: " + item.getName() + "; Item id: " + item.getId());
+        if (item != null) {
+            System.out.println("Item name: " + item.getName() + "; Item id: " + item.getId());
+        } else {
+            System.out.println("Item NOT found. Maybe because of illegal id");
+        }
     }
 
     public static void findItemByName(Input input, Tracker tracker) {
         System.out.println("=== Find item by name ====");
         String itemName = input.askStr("Enter item name: ");
         Item[] items = tracker.findByName(itemName);
+        if (items.length == 0) {
+            System.out.println("Item NOT found. Maybe because of illegal name");
+        }
         for (int i = 0; i < items.length; i++) {
             Item item1 = items[i];
             System.out.println("Item name: " + item1.getName() + "; Item id: " + item1.getId());
