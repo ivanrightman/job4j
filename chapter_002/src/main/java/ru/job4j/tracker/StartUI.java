@@ -7,15 +7,23 @@ public class StartUI {
         String name = input.askStr("Enter name: ");
         Item item = new Item(name);
         tracker.add(item);
-        System.out.println("Item name: " + item.getName() + "; Item id: " + item.getId());
+        if (item != null) {
+            System.out.println("Item name: " + item.getName() + "; Item id: " + item.getId());
+        } else {
+            System.out.println("Something went wrong. Please try again");
+        }
     }
 
     public static void showAllItems(Input input, Tracker tracker) {
         Item[] findAll = tracker.findAll();
         System.out.println("=== Showing all items ====");
-        for (int i = 0; i < findAll.length; i++) {
-            Item item1 = findAll[i];
-            System.out.println("Item name: " + item1.getName() + "; Item id: " + item1.getId());
+        if (findAll.length == 0) {
+            System.out.println("Nothing to show. There are no items yet");
+        } else if (findAll.length > 0) {
+            for (int i = 0; i < findAll.length; i++) {
+                Item item1 = findAll[i];
+                System.out.println("Item name: " + item1.getName() + "; Item id: " + item1.getId());
+            }
         }
     }
     public static void editItem(Input input, Tracker tracker) {
@@ -57,10 +65,11 @@ public class StartUI {
         Item[] items = tracker.findByName(itemName);
         if (items.length == 0) {
             System.out.println("Item NOT found. Maybe because of illegal name");
-        }
-        for (int i = 0; i < items.length; i++) {
-            Item item1 = items[i];
-            System.out.println("Item name: " + item1.getName() + "; Item id: " + item1.getId());
+        } else if (items.length > 0) {
+            for (int i = 0; i < items.length; i++) {
+                Item item1 = items[i];
+                System.out.println("Item name: " + item1.getName() + "; Item id: " + item1.getId());
+            }
         }
     }
 
