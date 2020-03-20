@@ -5,10 +5,10 @@ import java.util.StringJoiner;
 public class Triangle implements Shape {
     @Override
     public String draw(Shape shape) {
-        StringJoiner pic = new StringJoiner(System.lineSeparator());
-        pic.add("   x ");
-        pic.add("  xxx ");
-        pic.add(" xxxxx ");
+        StringBuilder  pic = new StringBuilder(System.lineSeparator());
+        pic.append("   x ");
+        pic.append("  xxx ");
+        pic.append(" xxxxx ");
         return pic.toString();
     }
 }
