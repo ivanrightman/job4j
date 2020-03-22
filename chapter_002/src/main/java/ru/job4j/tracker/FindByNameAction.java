@@ -9,6 +9,7 @@ public class FindByNameAction implements UserAction {
     @Override
     public boolean execute(Input input, Tracker tracker) {
         String itemName = input.askStr("Enter item name: ");
+        System.out.println("=== Find item by name ====");
         Item[] items = tracker.findByName(itemName);
         if (items.length == 0) {
             System.out.println("Item NOT found. Maybe because of illegal name");
