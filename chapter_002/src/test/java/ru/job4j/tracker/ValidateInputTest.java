@@ -28,8 +28,9 @@ public class ValidateInputTest {
 
     @Test
     public void whenInvalidInput() {
-        String[] data = {"one", "1"};
-        ValidateStubInput input = new ValidateStubInput(data);
+        ValidateInput input = new ValidateInput(
+                new StubInput(new String[] {"one", "1"})
+        );
         input.askInt("Enter");
         assertThat(
                 new String(out.toByteArray()),
@@ -39,9 +40,10 @@ public class ValidateInputTest {
 
     @Test
     public void whenMaxInput() {
-        String[] data = {"7", "1"};
-        ValidateStubInput input = new ValidateStubInput(data);
-        input.askInt("Enter", 6);
+        ValidateInput input = new ValidateInput(
+                new StubInput(new String[] {"0"})
+        );
+        input.askInt("Enter", 1);
         assertThat(
                 new String(out.toByteArray()),
                 is(String.format("Please select key from menu.%n"))
