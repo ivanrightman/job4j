@@ -41,9 +41,9 @@ public class ValidateInputTest {
     @Test
     public void whenMaxInput() {
         ValidateInput input = new ValidateInput(
-                new StubInput(new String[] {"0"})
+                new StubInput(new String[] {"7", "1"})
         );
-        input.askInt("Enter", 1);
+        input.askInt("Enter", 6);
         assertThat(
                 new String(out.toByteArray()),
                 is(String.format("Please select key from menu.%n"))
