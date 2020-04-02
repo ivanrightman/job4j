@@ -8,6 +8,7 @@ import org.junit.Test;
 import javax.rmi.CORBA.Stub;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.List;
 import java.util.StringJoiner;
 
 import static org.junit.Assert.*;
@@ -71,7 +72,7 @@ public class StartUITest {
         Item deleted = tracker.findById(item.getId());
         assertThat(deleted, is(nullValue()));
     }*/
-    @Test
+    /*@Test
     public void whenExit() {
         StubInput input = new StubInput(
                 new String[] {"0"}
@@ -79,8 +80,8 @@ public class StartUITest {
         StubAction action = new StubAction();
         new StartUI().init(input, new Tracker(), new UserAction[] {action});
         assertThat(action.isCall(), is(true));
-    }
-
+    }*/
+/*
     @Test
     public void whenPrtMenu() {
         StubInput input = new StubInput(
@@ -93,7 +94,7 @@ public class StartUITest {
                 .add("0. Stub action")
                 .toString();
         assertThat(new String(out.toByteArray()), is(expect));
-    }
+    }*/
 
     @Test
     public void whenCheckOutput() {

@@ -1,18 +1,21 @@
 package ru.job4j.tracker;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 public class Tracker {
     /**
      * Массив для хранения заявок.
      */
-    private final Item[] items = new Item[100];
+    //was: private final Item[] items = new Item[100];
+    private final List<Item> items = new ArrayList<>();
 
     /**
      * Указатель ячейки для новой заявки.
      */
-    private int position = 0;
+    //was: private int position = 0;
 
       /**
      * Метод добавления заявки в хранилище
@@ -23,7 +26,8 @@ public class Tracker {
      */
     public Item add(Item item) {
         item.setId(generateId());
-        items[this.position++] = item;
+        //was: items[this.position++] = item;
+        items.add(item);
         return item;
     }
 
@@ -40,9 +44,15 @@ public class Tracker {
 
     private int indexOf(String id) {
         int rsl = -1;
-        for (int i = 0; i < position; i++) {
+        /*was: for (int i = 0; i < position; i++) {
             if (items[i].getId().equals(id)) {
                 rsl = i;
+                break;
+            }
+        }*/
+        for (Item el : this.items) {
+            if (el.getId().equals(id)) {
+                rsl = this.items.indexOf(el);
                 break;
             }
         }
@@ -52,8 +62,9 @@ public class Tracker {
      * Метод public Item[] findAll() возвращает копию массива this.items без null элементов (без пустых клеток).
      * @return
      */
-    public Item[] findAll() {
-        return Arrays.copyOf(items, position);
+    //was: public Item[] findAll() {
+    public List<Item> findAll() {
+        //was: return Arrays.copyOf(items, position);
         /*Item[] tmp = Arrays.copyOf(items, position);
         for (int i = 0; i < position; i++) {
             if (this.items[i].getName() != null && this.items[i].getId() != null) {
@@ -61,6 +72,7 @@ public class Tracker {
             }
         }
         return tmp;*/
+        return this.items;
     }
 
     /**
@@ -71,8 +83,9 @@ public class Tracker {
      * возвращает его. Алгоритм этого метода аналогичен методу findAll.
      * @return
      */
-    public Item[] findByName(String key) {
-        Item[] tmp = new Item[position];
+    //was: public Item[] findByName(String key) {
+    public List<Item> findByName(String key) {
+        /*was: Item[] tmp = new Item[position];
         int size = 0;
         for (int i = 0; i < position; i++) {
             if (this.items[i].getName().equals(key)) {
@@ -80,7 +93,14 @@ public class Tracker {
                 size++;
             }
         }
-        return Arrays.copyOf(tmp, size);
+        return Arrays.copyOf(tmp, size);*/
+        List<Item> tmp = new ArrayList();
+        for (Item el : this.items) {
+            if (el.getName().equals(key)) {
+                tmp.add(el);
+            }
+        }
+        return tmp;
     }
 
     /**
@@ -91,14 +111,16 @@ public class Tracker {
      */
     public Item findById(String id) {
         int index = indexOf(id);
-        return index != -1 ? items[index] : null;
+        //was: return index != -1 ? items[index] : null;
+        return index != -1 ? items.get(index) : null;
     }
 
     public boolean replace(String id, Item item) {
         int index = indexOf(id);
         item.setId(id);
         if (index != -1) {
-            items[index] = item;
+            //was: items[index] = item;
+            items.add(item);
         }
         return index != -1 ? true : false;
     }
@@ -108,10 +130,11 @@ public class Tracker {
         if (index != -1) {
             int start = index + 1;
             int distPos = index;
-            int size = position - index;
+            /*was: int size = position - index;
             System.arraycopy(items, start, items, distPos, size);
             items[position - 1] = null;
-            position--;
+            position--;*/
+            items.remove(index);
         }
         return index != -1 ? true : false;
     }
