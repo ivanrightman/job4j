@@ -120,7 +120,7 @@ public class Tracker {
         item.setId(id);
         if (index != -1) {
             //was: items[index] = item;
-            items.add(item);
+            items.set(index, item);
         }
         return index != -1 ? true : false;
     }

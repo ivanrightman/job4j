@@ -18,11 +18,10 @@ public class FindByNameAction implements UserAction {
         if (items.size() == 0) {
             System.out.println("Item NOT found. Maybe because of illegal name");
         } //was: else if (items.length > 0) {
-        else if (items.size() > 0) {
+        else {
             //was: for (int i = 0; i < items.length; i++) {
             for (Item el : items) {
                 //was: Item item1 = items[i];
-                items.add(el);
                 System.out.println("Item name: " + el.getName() + "; Item id: " + el.getId());
             }
         }

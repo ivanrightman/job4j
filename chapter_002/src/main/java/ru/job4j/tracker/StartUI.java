@@ -26,11 +26,13 @@ public class StartUI {
     //was: private void showMenu(UserAction[] actions) {
     private void showMenu(List<UserAction> actions) {
         System.out.println("Menu: ");
+        int number = 0;
         /*was: for (int i = 0; i < actions.length; i++) {
             System.out.println(i + ". " + actions[i].name());
         }*/
         for (UserAction el : actions) {
-            System.out.println(el + ". " + el.name());
+            System.out.println(number + ". " + el.name());
+            number++;
         }
     }
 
