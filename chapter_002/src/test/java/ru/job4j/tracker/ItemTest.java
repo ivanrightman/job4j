@@ -21,7 +21,7 @@ public class ItemTest {
         items.add(item1);
         items.add(item2);
         items.add(item3);
-        Collections.sort(items);
+        Collections.sort(items, new SortAsc());
         List<String> result = Arrays.asList(items.get(0).getName(), items.get(1).getName(), items.get(2).getName());
         List<String> expected = Arrays.asList("item1", "tratata", "trulyalya");
         assertThat(result, is(expected));
@@ -36,7 +36,7 @@ public class ItemTest {
         items.add(item1);
         items.add(item2);
         items.add(item3);
-        Collections.sort(items, new SortReverse());
+        Collections.sort(items, new SortDesc());
         List<String> result = Arrays.asList(items.get(0).getName(), items.get(1).getName(), items.get(2).getName());
         List<String> expected = Arrays.asList("trulyalya", "tratata", "item1");
         assertThat(result, is(expected));
