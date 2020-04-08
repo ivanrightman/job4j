@@ -12,10 +12,8 @@ public class BankService {
 
     public void addAccount(String passport, Account account) {
         User user = findByPassport(passport);
-        if (!this.users.get(user).contains(account)) { //получить список по user и проверить по contains
+        if (user != null && !this.users.get(user).contains(account) ) { //получить список по user и проверить по contains
             this.users.get(user).add(account);
-        } else {
-            System.out.println("Такой счет: " + account.getRequisite() + " уже есть у пользователя");
         }
     }
 
@@ -31,19 +29,15 @@ public class BankService {
     }
 
     public Account findByRequisite(String passport, String requisite) {
-        Account account = new Account(requisite, -1);
+        Account account = null;
         User user = findByPassport(passport);
         if (user != null) {
-            int accIndex = this.users.get(user).indexOf(account);
-            if (accIndex != -1) {
-                account = this.users.get(user).get(accIndex);
-            } else {
-                System.out.println("Нет такого счета: " +  requisite);
-                account = null;
+            List<Account> accounts = this.users.get(user);
+            for (Account el : accounts) {
+                if (el.getRequisite().contains(requisite)) {
+                    account = el;
+                }
             }
-        } else {
-            System.out.println("Нет такого юзера: " +  passport);
-            account = null;
         }
         return account;
     }
@@ -60,13 +54,7 @@ public class BankService {
                 srcAcc.setBalance(newSrcBalance);
                 destAcc.setBalance(newDestBalance);
                 rsl = true;
-            } else {
-                System.out.println("На счете: " + srcRequisite + " недостаточно денег для списания");
             }
-        } else if (srcAcc == null){
-            System.out.println("Не найден счет для списания: " + srcRequisite);
-        } else if (destAcc == null){
-            System.out.println("Не найден счет для зачисления: " + destRequisite);
         }
         return rsl;
     }
