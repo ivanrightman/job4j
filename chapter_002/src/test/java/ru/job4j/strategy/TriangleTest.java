@@ -13,10 +13,10 @@ public class TriangleTest {
         Triangle triangle = new Triangle();
         assertThat(
                 triangle.draw(triangle),
-                is(new StringJoiner(System.lineSeparator())
-                        .add("   x ")
-                        .add("  xxx ")
-                        .add(" xxxxx ")
+                is(new StringBuilder(System.lineSeparator())
+                        .append("   x ")
+                        .append("  xxx ")
+                        .append(" xxxxx ")
                         .toString()
                 )
         );
