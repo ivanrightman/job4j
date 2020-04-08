@@ -13,13 +13,11 @@ Character.compare(char left, char right);
 
     @Override
     public int compare(String left, String right) {
-        char[] fromLeftChars = left.toCharArray();
-        char[] fromRightChars = right.toCharArray();
         int min = Math.min(left.length(), right.length());
 
         for (int i = 0; i < min; i++) {
-            if (fromLeftChars[i] != fromRightChars[i]) {
-                return Character.compare(fromLeftChars[i], fromRightChars[i]);
+            if (left.charAt(i) != right.charAt(i)) {
+                return Character.compare(left.charAt(i), right.charAt(i));
             }
         }
         return left.length() - right.length();
