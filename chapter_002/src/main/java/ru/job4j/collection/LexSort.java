@@ -5,18 +5,15 @@ import java.util.Comparator;
 public class LexSort implements Comparator<String> {
     @Override
     public int compare(String left, String right) {
-        int min = Math.min(left.length(), right.length());
-        int leftInt = 0;
-        int rightInt = 0;
+        int leftInt;
+        int rightInt;
         String[] leftInts = left.split("\\.");
         String[] rightInts = right.split("\\.");
 
-        for (int i = 0; i < min; i++) {
-            leftInt = Integer.parseInt(leftInts[i]);
-            rightInt = Integer.parseInt(rightInts[i]);
-            if (leftInt != rightInt) {
-                return Integer.compare(leftInt, rightInt);
-            }
+        leftInt = Integer.parseInt(leftInts[0]);
+        rightInt = Integer.parseInt(rightInts[0]);
+        if (leftInt != rightInt) {
+            return Integer.compare(leftInt, rightInt);
         }
         return left.length() - right.length();
     }
