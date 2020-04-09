@@ -5,17 +5,13 @@ import org.junit.Before;
 import org.junit.Test;
 
 
-import javax.rmi.CORBA.Stub;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.StringJoiner;
 
 import static org.junit.Assert.*;
 import static org.hamcrest.core.Is.is;
-import static org.hamcrest.Matchers.nullValue;
 
 public class StartUITest {
     // поле содержит дефолтный вывод в консоль.
