@@ -12,7 +12,7 @@ public class BankService {
 
     public void addAccount(String passport, Account account) {
         User user = findByPassport(passport);
-        if (user != null && !this.users.get(user).contains(account) ) { //получить список по user и проверить по contains
+        if (user != null && !this.users.get(user).contains(account)) { //получить список по user и проверить по contains
             this.users.get(user).add(account);
         }
     }
@@ -36,6 +36,7 @@ public class BankService {
             for (Account el : accounts) {
                 if (el.getRequisite().contains(requisite)) {
                     account = el;
+                    break;
                 }
             }
         }
@@ -66,21 +67,5 @@ public class BankService {
         int index = accounts.indexOf(new Account(requisite, -1));
         Account find = accounts.get(index);
         System.out.println(find.getRequisite() + " -> " + find.getBalance());
-        BankService bs = new BankService();
-        User user = new User("passport", "username");
-        bs.addUser(user);
-        System.out.println(bs.users.entrySet());
-        Account acc = new Account("1234", 101);
-        ArrayList<Account> accList = new ArrayList<>();
-        accList.add(acc);
-        bs.users.put(user, accList);
-        System.out.println(bs.users.entrySet());
-        System.out.println(bs.users.keySet());
-        System.out.println(bs.users.values());
-        ArrayList<Account> accl = new ArrayList(bs.users.values());
-        System.out.println(accl.get(0));
-        int index1 = accList.indexOf(new Account("1234", -1));
-        System.out.println(index1);
-        System.out.println(accl.contains(accl.get(index1)));
     }
 }
