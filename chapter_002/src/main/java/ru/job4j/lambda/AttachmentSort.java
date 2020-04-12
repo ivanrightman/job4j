@@ -23,7 +23,7 @@ public class AttachmentSort {
         System.out.println("По полю size: " + attachments);
         // Здесь создайте компаратор на основании анонимного класса.
 
-        Comparator comparatorAtt = new Comparator<Attachment>() {
+        Comparator<Attachment> comparatorAtt = new Comparator<Attachment>() {
             @Override
             public int compare(Attachment left, Attachment right) {
                 return left.getName().compareTo(right.getName());
