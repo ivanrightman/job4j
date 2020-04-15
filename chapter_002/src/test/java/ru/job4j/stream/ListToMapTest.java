@@ -13,7 +13,18 @@ public class ListToMapTest {
     public void surnameIsKeyStudentIsValue() {
         ListToMap listToMap = new ListToMap();
         Student student = new Student(100, "Ivanov");
-        List<Student> input = List.of(student);
+        Student student2 = new Student(100, "Petrov");
+        List<Student> input = List.of(student, student2);
+        Map<String, Student> result = listToMap.collect(input);
+        assertThat(result.get("Ivanov"), is(student));
+    }
+
+    @Test
+    public void surnameIsKeyStudentIsValueWhenDuplicateKey() {
+        ListToMap listToMap = new ListToMap();
+        Student student = new Student(100, "Ivanov");
+        Student student2 = new Student(100, "Ivanov");
+        List<Student> input = List.of(student, student2);
         Map<String, Student> result = listToMap.collect(input);
         assertThat(result.get("Ivanov"), is(student));
     }

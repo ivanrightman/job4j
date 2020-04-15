@@ -9,7 +9,8 @@ public class ListToMap {
         Map<String, Student> result = students.stream().collect(
                 Collectors.toMap(
                         student -> student.getSurname(),
-                        student -> student
+                        student -> student,
+                        (student1, student2) -> student1
                 ));
         return result;
     }
