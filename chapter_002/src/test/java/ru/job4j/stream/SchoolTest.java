@@ -74,4 +74,31 @@ public class SchoolTest {
         List<Student> result = school.collect(students, student -> student.getScore() >= 0 && student.getScore() < 50);
         assertThat(result, is(expected));
     }
+
+    @Test
+    public void levelOfWhenScoreAndNulls() {
+        School school = new School();
+        Student student1 = new Student("AVasya", 30);
+        Student studentNull1 = new Student();
+        Student student2 = new Student("CMisha", 50);
+        Student studentNull2 = new Student();
+        Student student3 = new Student("BSlava", 60);
+        Student studentNull3 = new Student();
+        List<Student> input = List.of(student1, studentNull1, student2, studentNull2, student3, studentNull3);
+        List<Student> expected = Arrays.asList(student3, student2, student1);
+        List<Student> result = school.levelOf(input, 29);
+        assertThat(result, is(expected));
+    }
+
+    @Test
+    public void levelOfWhenScoreAndNoNulls() {
+        School school = new School();
+        Student student1 = new Student("AVasya", 30);
+        Student student2 = new Student("CMisha", 50);
+        Student student3 = new Student("BSlava", 60);
+        List<Student> input = List.of(student1, student2, student3);
+        List<Student> expected = Arrays.asList(student3, student2);
+        List<Student> result = school.levelOf(input, 31);
+        assertThat(result, is(expected));
+    }
 }

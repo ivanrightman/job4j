@@ -1,7 +1,7 @@
 # используем язык java. Travis CI поддерживает другие языки тоже.
 language: java
 jdk:
-  - openjdk12
+  - openjdk11
 # git strips the wrapper jar file so we have to force its download during the build
 install:
   - mvn -N io.takari:maven:wrapper
