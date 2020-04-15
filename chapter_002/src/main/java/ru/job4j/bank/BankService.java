@@ -6,30 +6,33 @@ public class BankService {
     private Map<User, List<Account>> users = new HashMap<>();
 
     public void addUser(User user) {
-        List<Account> accounts = new ArrayList<>();
-        this.users.putIfAbsent(user, accounts);
+        /*was: List<Account> accounts = new ArrayList<>();
+        this.users.putIfAbsent(user, accounts);*/
+        this.users.computeIfAbsent(user, key -> new ArrayList<>());
     }
 
     public void addAccount(String passport, Account account) {
-        User user = findByPassport(passport);
+        /*was: User user = findByPassport(passport);
         if (user != null && !this.users.get(user).contains(account)) { //получить список по user и проверить по contains
             this.users.get(user).add(account);
-        }
+        }*/
+        this.users.get(findByPassport(passport)).add(account);
     }
 
     public User findByPassport(String passport) {
-        User user = null;
+        /*was:User user = null;
         for (User el : users.keySet()) {
             if (el.getPassport().equals(passport)) {
                 user = el;
                 break;
             }
-        }
+        }*/
+        User user = this.users.keySet().stream().filter(el -> el.getPassport().equals(passport)).findFirst().orElse(null);
         return user;
     }
 
     public Account findByRequisite(String passport, String requisite) {
-        Account account = null;
+        /*was: Account account = null;
         User user = findByPassport(passport);
         if (user != null) {
             List<Account> accounts = this.users.get(user);
@@ -40,6 +43,9 @@ public class BankService {
                 }
             }
         }
+        return account;*/
+        Account account = this.users.get(findByPassport(passport)).stream()
+                .filter(e -> e.getRequisite().contains(requisite)).findFirst().orElse(null);
         return account;
     }
 
