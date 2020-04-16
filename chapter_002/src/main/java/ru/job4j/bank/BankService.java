@@ -12,11 +12,10 @@ public class BankService {
     }
 
     public void addAccount(String passport, Account account) {
-        /*was: User user = findByPassport(passport);
+        User user = findByPassport(passport);
         if (user != null && !this.users.get(user).contains(account)) { //получить список по user и проверить по contains
             this.users.get(user).add(account);
-        }*/
-        this.users.get(findByPassport(passport)).add(account);
+        }
     }
 
     public User findByPassport(String passport) {
@@ -44,9 +43,15 @@ public class BankService {
             }
         }
         return account;*/
-        Account account = this.users.get(findByPassport(passport)).stream()
-                .filter(e -> e.getRequisite().contains(requisite)).findFirst().orElse(null);
-        return account;
+        User user = findByPassport(passport);
+        if (user != null) {
+            Account account = this.users.get(user)
+                    .stream()
+                    .filter(e -> e.getRequisite().equals(requisite))
+                    .findFirst().orElse(null);
+            return account;
+        }
+        return null;
     }
 
     public boolean transferMoney(String srcPassport, String srcRequisite,
