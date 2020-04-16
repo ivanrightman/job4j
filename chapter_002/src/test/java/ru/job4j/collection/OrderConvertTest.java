@@ -13,8 +13,10 @@ public class OrderConvertTest {
 
     @Test
     public void add() {
-        List<Order> orders = new ArrayList<>();
-        orders.add(new Order("3sfe", "Dress"));
+        List<Order> orders = List.of(
+                new Order("3sfe", "Dress"
+                )
+        );
         HashMap<String, Order> map = OrderConvert.process(orders);
         assertThat(map.get("3sfe"), is(new Order("3sfe", "Dress")));
 
